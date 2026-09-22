@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUNTIK LIKE TIKTOK BY TOPBAX EX</title>
+<style>
+:root{
+  --bg:#f8f8ff; --text:#171821; --muted:#737784; --card:#ffffff;
+  --line:#e7e7ee; --red:#e91d3f; --red2:#ff3b5c; --green:#16a36b;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+button,input{font:inherit}
+button{cursor:pointer}
+.top{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--line);background:rgba(248,248,255,.88);backdrop-filter:blur(12px);position:sticky;top:0;z-index:5}
+.logo{font-weight:800;letter-spacing:.08em;font-size:14px}
+.gear{width:42px;height:42px;border:1px solid #dddde6;border-radius:50%;background:#fff;font-size:20px;display:grid;place-items:center;transition:.2s}
+.gear:hover{transform:rotate(30deg);box-shadow:0 6px 20px #00000012}
+.page{max-width:760px;margin:0 auto;padding:70px 22px 60px}
+.hero{text-align:center;margin-bottom:38px}
+.badge{display:inline-block;font-size:11px;letter-spacing:.16em;font-weight:800;color:var(--red);margin-bottom:16px}
+h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:0 0 14px;letter-spacing:-.045em}
+.sub{color:var(--muted);font-size:15px;line-height:1.7;max-width:560px;margin:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 18px 50px #2222380a}
+.label{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+input{width:100%;border:1px solid #dfe0e8;background:#fbfbfd;border-radius:15px;padding:16px 17px;outline:none;color:var(--text);transition:.2s}
+input:focus{border-color:#b9bac7;box-shadow:0 0 0 4px #11111d08}
+.primary{display:block;margin:18px auto 0;border:0;background:#171821;color:white;border-radius:999px;padding:13px 24px;font-weight:800;font-size:13px;min-width:120px}
+.primary:disabled{opacity:.35;cursor:not-allowed}
+.hidden{display:none!important}
+.steps{display:grid;gap:16px}
+.step{position:relative;padding:23px;border-radius:20px;background:linear-gradient(145deg,#fff,#fffafb);border:1px solid #f0dfe2;box-shadow:0 10px 35px #e91d3f0c}
+.step:before{content:"";position:absolute;inset:-1px;border-radius:20px;padding:1px;background:linear-gradient(135deg,#ff395a55,transparent 45%,#ff395a22);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.stephead{display:flex;align-items:center;gap:12px;margin-bottom:17px}
+.num{width:32px;height:32px;border-radius:10px;background:#171821;color:white;display:grid;place-items:center;font-size:12px;font-weight:900}
+.stitle{font-size:13px;font-weight:900;letter-spacing:.08em}
+.hint{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.5}
+.error{font-size:12px;color:#d91638;margin-top:8px;font-weight:700}
+.confirm{width:100%;margin-top:18px;border:0;border-radius:15px;padding:15px;background:var(--green);color:white;font-weight:900;letter-spacing:.08em;box-shadow:0 9px 24px #16a36b2b}
+.confirm:disabled{opacity:.35;box-shadow:none;cursor:not-allowed}
+.status{text-align:center;margin-top:20px;font-weight:800;font-size:14px;line-height:1.6}
+.access-timer{text-align:center;margin:0 auto 14px;font-size:12px;font-weight:900;letter-spacing:.08em;color:#d91638;min-height:18px}
+.modal{position:fixed;inset:0;background:#11121dcc;display:none;align-items:center;justify-content:center;padding:20px;z-index:20}
+.modal.show{display:flex}
+.modalbox{width:min(500px,100%);background:#fff;border-radius:24px;padding:28px;box-shadow:0 25px 80px #0005}
+.modalbox h2{margin:0 0 15px;font-size:21px}
+.modalbox p{color:#555965;line-height:1.75;font-size:14px;white-space:pre-line}
+.close{border:1px solid #dddde6;background:#fff;border-radius:12px;padding:11px 18px;font-weight:800}
+.home-red{min-height:calc(100vh - 132px);margin:-70px -22px -60px;padding:70px 22px 60px;background:linear-gradient(145deg,#080808 0%,#170303 42%,#420707 100%);color:#fff}.home-red .sub{color:#cfcfd5}.home-red .card{background:#0d0d0f;border-color:#5d171d}.home-red .label{color:#fff}.home-red input{background:#151518;color:#fff;border-color:#4a2024}.home-red .primary{background:#e51c3b}.home-red .footer{color:#aaa}.footer{text-align:center;color:#a0a1aa;font-size:11px;margin-top:25px}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#171821;color:#fff;border-radius:13px;padding:13px 18px;font-size:12px;font-weight:700;transition:.25s;z-index:30}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:520px){.top{padding:0 17px}.page{padding-top:48px}.card{padding:19px}.step{padding:19px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="logo">SUNTIK LIKE TIKTOK <span style="color:var(--red)">BY TOPBAX EX</span></div>
+  <button class="gear" id="tutorialBtn" aria-label="Tutorial">⚙</button>
+</header>
+
+<main class="page">
+<section id="home" class="home-red">
+  <div class="hero">
+    <div class="badge">TIKTOK • PREMIUM</div>
+    <h1>Masukkan password</h1>
+    <p class="sub">Masukkan link video TikTok. Sistem menerima link yang diawali dengan <b>https://</b>.</p>
+  </div>
+  <div class="card">
+    <div class="label">MASUKIN PASSWORD</div>
+    <input id="link" type="password" placeholder="Masukkan password..." autocomplete="off">
+    <div id="linkError" class="error hidden">PASSWORD SALAH, MOHON PERIKSA KEMBALI ❗</div>
+    <button class="primary" id="continueBtn" disabled>Lanjutkan</button>
+  </div>
+  <div class="footer">Berlaku untuk TikTok saja ❗</div>
+</section>
+
+<section id="formPage" class="hidden">
+  <div class="hero">
+    <div class="badge">PREMIUM • DATA</div>
+    <div id="accessTimer" class="access-timer"></div>
+    <h1>Lengkapi data.</h1>
+    <p class="sub">Isi seluruh langkah dengan teliti sebelum melakukan konfirmasi.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="stephead"><div class="num">01</div><div class="stitle">USERNAME TIKTOK</div></div>
+      <input id="username" type="text" placeholder="NAMA AKUN / USERNAME TIKTOK" autocomplete="off">
+      <div class="hint">Harus memiliki minimal 3 angka.</div>
+      <div id="userError" class="error hidden">Username harus terdiri dari minimal 3 karakter dan memiliki minimal 3 angka.</div>
+    </div>
+    <div class="step">
+      <div class="stephead"><div class="num">02</div><div class="stitle">LINK VIDEO</div></div>
+      <input id="videoLink" type="text" placeholder="https://vt.tiktok.com/contoh/" autocomplete="off">
+      <div class="hint">Masukkan link video TikTok. Link harus diawali dengan https://, setelah itu pengguna bebas menulis.</div>
+      <div id="videoError" class="error hidden">Link video TikTok tidak valid.</div>
+    </div>
+    <div class="step">
+      <div class="stephead"><div class="num">03</div><div class="stitle">NOMINAL SUNTIK</div></div>
+      <input id="amount" type="number" min="1" max="1000" placeholder="1 — 1000">
+      <div class="hint">Minimal 1 dan maksimal 1000.</div>
+      <div id="amountError" class="error hidden">Nominal harus antara 1 sampai 1000.</div>
+    </div>
+    <div class="step">
+      <div class="stephead"><div class="num">04</div><div class="stitle">CONFIRMATION</div></div>
+      <button class="confirm" id="confirmBtn" disabled>CONFIRMED</button>
+      <div id="status" class="status"></div>
+    </div>
+  </div>
+  <button class="close" style="display:block;margin:18px auto 0" id="backBtn">Kembali</button>
+</section>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modalbox">
+    <h2>Tutorial</h2>
+    <p>* PENAMBAH LIKE ONLY TIKTOK
+*SUNTIK TIDAK 100% SESUAI DENGAN NOMINAL
+*FREE
+*TIDAK PERMANEN
+
+BERLAKU UNTUK TIKTOK SAJA❗
+
+Masukkan link TikTok pada halaman awal, lalu tekan Lanjutkan. Setelah itu isi username, link video, dan nominal sesuai ketentuan. Tekan CONFIRMED untuk memproses data.</p>
+    <button class="close" id="closeModal">Tutup</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+
+/*
+  Password access:
+  TIPBAXVI0729  = PERMANEN
+  TRIL89103876  = 3 MENIT
+  TRILTOPBAEX6  = 3 MENIT
+  DUTRIL94093   = 3 JAM
+  9489TRILPOUM  = 1 HARI
+*/
+const ACCESS={
+  "TIPBAXVI0729": null,
+  "TRIL89103876": 3*60*1000,
+  "TRILTOPBAEX6": 3*60*1000,
+  "DUTRIL94093": 3*60*60*1000,
+  "9489TRILPOUM": 24*60*60*1000,
+  "TRI92882976520": 15*1000
+};
+
+let activePassword=null;
+let accessExpiresAt=null;
+let accessTimer=null;
+
+function validateHome(){
+  const value=$('link').value;
+  const ok=Object.prototype.hasOwnProperty.call(ACCESS,value);
+  $('continueBtn').disabled=!ok;
+  $('linkError').classList.toggle('hidden', !value || ok);
+}
+
+function formatRemaining(ms){
+  const total=Math.max(0,Math.ceil(ms/1000));
+  const d=Math.floor(total/86400);
+  const h=Math.floor((total%86400)/3600);
+  const m=Math.floor((total%3600)/60);
+  const sec=total%60;
+
+  if(d>0) return `${d} HARI ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+  if(h>0) return `${h} JAM ${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+  return `${m} MENIT ${String(sec).padStart(2,'0')} DETIK`;
+}
+
+function updateAccessTimer(){
+  if(accessExpiresAt===null){
+    $('accessTimer').textContent='AKSES: PERMANEN';
+    return true;
+  }
+
+  const remaining=accessExpiresAt-Date.now();
+  if(remaining<=0){
+    expireAccess();
+    return false;
+  }
+
+  $('accessTimer').textContent='SISA WAKTU AKSES: '+formatRemaining(remaining);
+  return true;
+}
+
+function startAccess(password){
+  activePassword=password;
+  const duration=ACCESS[password];
+  accessExpiresAt=duration===null ? null : Date.now()+duration;
+
+  clearInterval(accessTimer);
+  accessTimer=setInterval(updateAccessTimer,1000);
+  updateAccessTimer();
+}
+
+function expireAccess(){
+  clearInterval(accessTimer);
+  accessTimer=null;
+  activePassword=null;
+  accessExpiresAt=null;
+
+  $('formPage').classList.add('hidden');
+  $('home').classList.remove('hidden');
+  $('link').value='';
+  $('continueBtn').disabled=true;
+  $('linkError').classList.add('hidden');
+
+  $('username').value='';
+  $('videoLink').value='';
+  $('amount').value='';
+  $('status').textContent='';
+  $('status').style.color='';
+  $('accessTimer').textContent='';
+
+  validateForm();
+  $('link').focus();
+}
+
+$('link').addEventListener('input',validateHome);
+
+$('continueBtn').onclick=()=>{
+  const password=$('link').value;
+  if(!Object.prototype.hasOwnProperty.call(ACCESS,password)) return;
+
+  startAccess(password);
+  $('home').classList.add('hidden');
+  $('formPage').classList.remove('hidden');
+  validateForm();
+};
+
+function validateForm(){
+  const u=$('username').value.trim();
+  const l=$('videoLink').value.trim();
+  const raw=$('amount').value.trim();
+  const n=Number(raw);
+
+  const userOk=u.length>=3 && (u.match(/\d/g)||[]).length>=3;
+  const linkOk=l.length>=7;
+  const amountOk=raw!=='' && Number.isInteger(n) && n>=1 && n<=1000;
+
+  $('userError').classList.toggle('hidden',userOk);
+  $('videoError').classList.toggle('hidden',linkOk);
+  $('amountError').classList.toggle('hidden',amountOk);
+
+  const allOk=userOk && linkOk && amountOk;
+  $('confirmBtn').disabled=!allOk;
+  $('confirmBtn').setAttribute('aria-disabled', String(!allOk));
+  return allOk;
+}
+
+['username','videoLink','amount'].forEach(id=>{
+  $(id).addEventListener('input',validateForm);
+  $(id).addEventListener('change',validateForm);
+});
+
+$('backBtn').onclick=()=>{
+  $('formPage').classList.add('hidden');
+  $('home').classList.remove('hidden');
+  clearInterval(accessTimer);
+  accessTimer=null;
+};
+
+$('tutorialBtn').onclick=()=>$('modal').classList.add('show');
+$('closeModal').onclick=()=>$('modal').classList.remove('show');
+$('modal').addEventListener('click',e=>{
+  if(e.target===$('modal')) $('modal').classList.remove('show');
+});
+
+$('confirmBtn').onclick=()=>{
+  if(!updateAccessTimer()) return;
+  if(!validateForm()) return;
+
+  $('confirmBtn').disabled=true;
+  $('status').style.color='var(--muted)';
+  $('status').textContent='Memeriksa data...';
+
+  setTimeout(()=>{
+    if(activePassword===null || (accessExpiresAt!==null && Date.now()>=accessExpiresAt)){
+      expireAccess();
+      return;
+    }
+    $('status').textContent='BERHASIL DI SUNTIK\nPROSES 1–10 MENIT';
+    $('status').style.color='var(--green)';
+  },3000);
+};
+
+validateHome();
+</script>
+</body>
+</html>
